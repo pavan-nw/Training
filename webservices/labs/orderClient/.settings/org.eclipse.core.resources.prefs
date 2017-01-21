@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/com/bt/ws/order/Order.java=UTF-8
+encoding//src/com/bt/ws/order/OrderService.java=UTF-8
+encoding//src/com/bt/ws/order/OrderServiceImplPortBindingStub.java=UTF-8
+encoding//src/com/bt/ws/order/OrderServiceImplService.java=UTF-8
+encoding//src/com/bt/ws/order/OrderServiceImplServiceLocator.java=UTF-8

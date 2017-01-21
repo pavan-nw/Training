@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tariff>
+    <planName>MonsoonDhamaka</planName>
+    <freeCalls>1000</freeCalls>
+    <callRatePerMin>0.25</callRatePerMin>
+    <price>199.0</price>
+</tariff>

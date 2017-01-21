@@ -1,0 +1,11 @@
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+	<S:Header>
+		<encryptedData xmlns="http://ws.ramselabs.com/"
+			xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+			SOAP-ENV:actor="http://schemas.xmlsoap.org/soap/actor/next">1ab2fea66705b7b807bb2c7c0ee32378b7222f226f6fce33abb19b440426135d
+		</encryptedData>
+	</S:Header>
+	<S:Body>
+		<ns2:getServerName xmlns:ns2="http://ws.ramselabs.com/" />
+	</S:Body>
+</S:Envelope>

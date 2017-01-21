@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" wsdlLocation="http://localhost:9999/tariffs?wsdl"
+	xmlns="http://java.sun.com/xml/ns/jaxws">
+	<bindings node="wsdl:definitions" xmlns:jws="http://java.sun.com/xml/ns/javaee">
+		<enableAsyncMapping>true</enableAsyncMapping>
+		<jws:handler-chains>
+			<jws:handler-chain>
+				<jws:handler>
+					<jws:handler-class>com.bt.handler.LoggingHandler</jws:handler-class>
+				</jws:handler>
+			</jws:handler-chain>
+		</jws:handler-chains>
+	</bindings>
+</bindings>
