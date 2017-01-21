@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+	<S:Body>
+		<ns2:getWeatherResponse xmlns:ns2="http://service.weather.ws.bt.com/">
+		<return>
+			<city>Bangalore</city>
+			<maxTemp>31.5</maxTemp>
+			<minTemp>28.5</minTemp>
+			<weatherDate>2015-10-05T15:21:21.744+05:30</weatherDate>
+		</return>
+		</ns2:getWeatherResponse>
+	</S:Body>
+</S:Envelope>

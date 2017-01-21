@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+<S:Body>
+	<ns2:getWeather xmlns:ns2="http://service.weather.ws.bt.com/">
+		<arg0>Bangalore</arg0>
+	</ns2:getWeather>
+</S:Body>
+</S:Envelope>

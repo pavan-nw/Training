@@ -1,0 +1,47 @@
+>schemagen -d . .\src\com\bt\ws\weather\WeatherReport.java
+
+>xjc  -d .\gen schema1.xsd
+
+>wsgen 
+
+>wsimport -keep -d .\src http://localhost:8888/api/weatherReport?wsdl
+
+>wsimport -b ..\bindings.xml -d .  -keep http://localhost:8888/api/weatherReport?wsdl
+
+>wsimport -b ..\bindings.xml -d .  -clientjar weather-stub.jar http://localhost:8888/api/weatherReport?wsdl
+
+portType : refers to interface
+operation : refers to webmethod
+
+http://paste.ubuntu.com/12687999/	-- WeatherUnmarsheller
+
+http://paste.ubuntu.com/12695153/ -- WeatherClientAsync 
+
+https://jax-ws.java.net/2.2.10/ -- Apacahe Tomcat WS Jars
+
+https://jax-ws.java.net/articles/handlers_introduction.html
+
+https://github.com/arunramkrish/bt_webservices
+
+---------------------------------------------------------------------------------------------------
+RESTful WebServices
+
+Resource ful URIs..
+
+Diff types : JSON, Text, XML etc
+
+https://en.wikipedia.org/wiki/HATEOAS
+
+
+
+>keytool -genkey -alias tomcat -keyalg RSA
+
+Key Store PWD : keystore123
+
+
+
+----------------------------------------------------------------------------------------------------
+
+https://github.com/pavannw
+
+GIT HUB Username : pavan-nw

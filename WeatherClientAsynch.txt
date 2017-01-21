@@ -1,0 +1,92 @@
+package com.bt.ws.weather.client;
+
+import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.ws.AsyncHandler;
+import javax.xml.ws.Response;
+
+import com.bt.ws.weather.WeatherReport;
+import com.bt.ws.weather.service.GetWeatherResponse;
+import com.bt.ws.weather.service.InvalidCityException_Exception;
+import com.bt.ws.weather.service.WeatherService;
+import com.bt.ws.weather.service.WeatherServiceImplService;
+
+public class WeatherServiceClient {
+
+	public static class MyAsyncHandler implements AsyncHandler<GetWeatherResponse> {
+
+		@Override
+		public void handleResponse(Response<GetWeatherResponse> res) {
+			try {
+				System.out.println(res.get().getReturn().getPlace());
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	public static void main(String[] args)
+			throws DatatypeConfigurationException,
+			InvalidCityException_Exception {
+		WeatherServiceImplService factory = new WeatherServiceImplService();
+
+		WeatherService stub = factory.getWeatherServiceImplPort();
+
+		// synchronous call
+		XMLGregorianCalendar date = DatatypeFactory.newInstance()
+				.newXMLGregorianCalendar();
+		WeatherReport report = stub.getWeather("Bangalore", date);
+		System.out.println(report.getMaxTemp());
+
+		// async call with polling
+		Response<GetWeatherResponse> response = stub.getWeatherAsync(
+				"Bangalore", date);
+		do {
+			try {
+				GetWeatherResponse responseWrapper = response.get(1,
+						TimeUnit.MILLISECONDS);
+				if (responseWrapper != null) {
+					report = responseWrapper.getReturn();
+					break;
+				}
+
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			} catch (TimeoutException e) {
+				e.printStackTrace();
+			}
+		} while (true);
+		System.out.println(report.getMinTemp());
+
+		AsyncHandler<GetWeatherResponse> asyncHandler = new MyAsyncHandler();
+		//callback
+		Future<GetWeatherResponse> future = (Future<GetWeatherResponse>) stub.getWeatherAsync("Bangalore", date, asyncHandler );
+		try {
+			future.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		Scanner scanner = new Scanner(System.in);
+//		scanner.nextLine();
+	}
+
+}
